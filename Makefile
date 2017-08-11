@@ -164,8 +164,7 @@ PULSEAUDIO_VARS_OFF=	GN_ARGS+=use_pulseaudio=false
 
 # With SNDIO=on we exclude audio_manager_linux from the build (see
 # media/audio/BUILD.gn) and use audio_manager_openbsd which does not
-# support falling back to ALSA.  In theory it supports falling back to
-# PulseAudio, but this is untested.
+# support falling back to ALSA or PulseAudio.
 SNDIO_PREVENTS=		ALSA PULSEAUDIO
 SNDIO_LIB_DEPENDS=	libsndio.so:audio/sndio
 SNDIO_VARS=		GN_ARGS+=use_sndio=true
