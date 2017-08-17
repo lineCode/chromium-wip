@@ -2,7 +2,7 @@
 # $FreeBSD: head/www/chromium/Makefile 446307 2017-07-21 11:14:01Z cpm $
 
 PORTNAME=	chromium
-PORTVERSION=	60.0.3112.90
+PORTVERSION=	60.0.3112.101
 CATEGORIES=	www
 MASTER_SITES=	https://commondatastorage.googleapis.com/chromium-browser-official/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
