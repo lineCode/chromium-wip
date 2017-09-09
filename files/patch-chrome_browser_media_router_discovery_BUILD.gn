@@ -1,0 +1,11 @@
+--- chrome/browser/media/router/discovery/BUILD.gn.orig	2017-09-07 11:38:49.889605000 +0200
++++ chrome/browser/media/router/discovery/BUILD.gn	2017-09-07 07:59:55.916110000 +0200
+@@ -49,7 +49,7 @@
+     "media_sink_service_base.h",
+   ]
+ 
+-  if (!is_android) {
++  if (!is_android && !is_bsd) {
+     sources += [
+       "discovery_network_info.cc",
+       "discovery_network_info.h",

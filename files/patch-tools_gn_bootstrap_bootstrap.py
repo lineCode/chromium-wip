@@ -1,5 +1,5 @@
---- tools/gn/bootstrap/bootstrap.py.orig	2017-08-03 00:05:40.000000000 +0200
-+++ tools/gn/bootstrap/bootstrap.py	2017-08-09 23:59:54.024577000 +0200
+--- tools/gn/bootstrap/bootstrap.py.orig	2017-09-05 21:05:47.000000000 +0200
++++ tools/gn/bootstrap/bootstrap.py	2017-09-07 02:32:16.414885000 +0200
 @@ -23,6 +23,7 @@
  import shutil
  import subprocess
@@ -20,7 +20,24 @@
  
  def check_call(cmd, **kwargs):
    logging.debug('Running: %s', ' '.join(cmd))
-@@ -627,7 +629,7 @@
+@@ -449,6 +451,7 @@
+       'base/metrics/histogram_base.cc',
+       'base/metrics/histogram_functions.cc',
+       'base/metrics/histogram_samples.cc',
++      'base/metrics/histogram_snapshot_manager.cc',
+       'base/metrics/metrics_hashes.cc',
+       'base/metrics/persistent_histogram_allocator.cc',
+       'base/metrics/persistent_memory_allocator.cc',
+@@ -534,7 +537,7 @@
+       'base/trace_event/heap_profiler_allocation_context_tracker.cc',
+       'base/trace_event/heap_profiler_allocation_register.cc',
+       'base/trace_event/heap_profiler_event_filter.cc',
+-      'base/trace_event/heap_profiler_event_writer.cc',
++      'base/trace_event/heap_profiler_heap_dump_writer.cc',
+       'base/trace_event/heap_profiler_serialization_state.cc',
+       'base/trace_event/heap_profiler_stack_frame_deduplicator.cc',
+       'base/trace_event/heap_profiler_type_name_deduplicator.cc',
+@@ -627,7 +630,7 @@
          'cflags': cflags + ['-DHAVE_CONFIG_H'],
      }
  
@@ -29,7 +46,7 @@
      ldflags.extend(['-pthread'])
  
      static_libraries['xdg_user_dirs'] = {
-@@ -642,16 +644,45 @@
+@@ -642,16 +645,44 @@
          'base/memory/shared_memory_tracker.cc',
          'base/nix/xdg_util.cc',
          'base/process/internal_linux.cc',
@@ -65,7 +82,6 @@
 +        'base/process/process_iterator_' + platform.system().lower() + '.cc',
 +        'base/process/process_metrics_'+ platform.system().lower() + '.cc',
 +        'base/sys_info_' + platform.system().lower() + '.cc',
-+        'base/task_scheduler/environment_config.cc',
 +    ])
 +    static_libraries['libevent']['include_dirs'].extend([
 +        os.path.join(SRC_ROOT, 'base', 'third_party', 'libevent', 'freebsd')
