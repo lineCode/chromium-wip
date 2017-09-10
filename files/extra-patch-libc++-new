@@ -1,5 +1,5 @@
 --- tools/gn/bootstrap/bootstrap.py.orig	2017-09-05 21:05:47.000000000 +0200
-+++ tools/gn/bootstrap/bootstrap.py	2017-09-07 02:32:16.414885000 +0200
++++ tools/gn/bootstrap/bootstrap.py	2017-09-10 22:43:57.996797000 +0200
 @@ -23,6 +23,7 @@
  import shutil
  import subprocess

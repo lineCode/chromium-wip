@@ -200,6 +200,9 @@ MAKE_ENV+=	C_INCLUDE_PATH=${LOCALBASE}/include \
 # Work around base r261801
 .if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100508
 GN_ARGS+=	extra_cxxflags="-D_LIBCPP_TRIVIAL_PAIR_COPY_CTOR=1"
+EXTRA_PATCHES+=	${FILESDIR}/extra-patch-libc++-old
+.else
+EXTRA_PATCHES+=	${FILESDIR}/extra-patch-libc++-new
 .endif
 
 .if !defined(GN_ONLY)
