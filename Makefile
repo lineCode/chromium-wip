@@ -61,11 +61,11 @@ LIB_DEPENDS=	libspeechd.so:accessibility/speech-dispatcher \
 RUN_DEPENDS=	xdg-open:devel/xdg-utils \
 		droid-fonts-ttf>0:x11-fonts/droid-fonts-ttf
 
-ONLY_FOR_ARCHS=	amd64 i386
+ONLY_FOR_ARCHS=	aarch64 amd64 i386
 .endif
 
 .if defined(GN_ONLY)
-USES=		compiler:c++11-lib ninja pkgconfig python:2,build shebangfix tar:xz
+USES=		compiler:c++14-lang ninja pkgconfig python:2,build shebangfix tar:xz
 .else
 USES=		bison cpe desktop-file-utils execinfo jpeg ninja perl5 pkgconfig \
 		python:2,build shebangfix tar:xz
