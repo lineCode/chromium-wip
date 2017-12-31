@@ -1,5 +1,5 @@
 bin/chrome
-man/man1/chrome.1.gz
+man/man1/chrome.1
 share/applications/chromium-browser.desktop
 %%DATADIR%%/chrome
 %%DATADIR%%/chrome-wrapper
@@ -10,6 +10,8 @@ share/applications/chromium-browser.desktop
 %%DATADIR%%/icudtl.dat
 %%DATADIR%%/natives_blob.bin
 %%DATADIR%%/keyboard_resources.pak
+%%DATADIR%%/libEGL.so
+%%DATADIR%%/libGLESv2.so
 %%DATADIR%%/locales/am.pak
 %%DATADIR%%/locales/ar.pak
 %%DATADIR%%/locales/bg.pak
@@ -233,6 +235,8 @@ share/applications/chromium-browser.desktop
 %%DATADIR%%/resources/inspector/unit_test_runner.js
 %%DATADIR%%/resources/inspector/workspace_diff/workspace_diff_module.js
 %%DATADIR%%/snapshot_blob.bin
+%%DATADIR%%/swiftshader/libEGL.so
+%%DATADIR%%/swiftshader/libGLESv2.so
 %%DATADIR%%/test_ime_driver.service
 %%DATADIR%%/ui.service
 %%DATADIR%%/views_mus_resources.pak
