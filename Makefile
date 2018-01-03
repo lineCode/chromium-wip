@@ -277,7 +277,7 @@ do-install:
 .endfor
 	${INSTALL_DATA} ${WRKSRC}/out/${BUILDTYPE}/*.png ${STAGEDIR}${DATADIR}
 	${INSTALL_DATA} ${WRKSRC}/out/${BUILDTYPE}/*.pak ${STAGEDIR}${DATADIR}
-.for d in protoc icudtl.dat mksnapshot natives_blob.bin snapshot_blob.bin
+.for d in protoc icudtl.dat mksnapshot natives_blob.bin snapshot_blob.bin v8_context_snapshot.bin
 	${INSTALL_DATA} ${WRKSRC}/out/${BUILDTYPE}/${d} ${STAGEDIR}${DATADIR}
 .endfor
 	${INSTALL_PROGRAM} ${WRKSRC}/out/${BUILDTYPE}/chrome \

@@ -1,6 +1,4 @@
 bin/chrome
-man/man1/chrome.1.gz
-share/applications/chromium-browser.desktop
 %%DATADIR%%/chrome
 %%DATADIR%%/chrome-wrapper
 %%DATADIR%%/chrome_100_percent.pak
@@ -307,6 +305,7 @@ share/applications/chromium-browser.desktop
 %%DATADIR%%/swiftshader/libGLESv2.so
 %%DATADIR%%/test_ime_driver.service
 %%DATADIR%%/ui.service
+%%DATADIR%%/v8_context_snapshot.bin
 %%DATADIR%%/views_mus_resources.pak
 %%DEBUG%%%%DATADIR%%/character_data_generator
 %%DEBUG%%%%DATADIR%%/libaccessibility.so
@@ -465,6 +464,8 @@ share/applications/chromium-browser.desktop
 %%DEBUG%%%%DATADIR%%/libx11_events_platform.so
 %%DEBUG%%%%DATADIR%%/libx11_window.so
 %%DRIVER%%bin/chromedriver
+man/man1/chrome.1.gz
+share/applications/chromium-browser.desktop
 share/icons/hicolor/128x128/apps/chrome.png
 share/icons/hicolor/22x22/apps/chrome.png
 share/icons/hicolor/24x24/apps/chrome.png
