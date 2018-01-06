@@ -228,6 +228,11 @@ pre-everything::
 	@${ECHO_MSG} "and ${WANTSPACE}."
 	@${ECHO_MSG}
 
+post-patch:
+	@${REINPLACE_CMD} -e 's|@@PACKAGE@@|chromium|' \
+			-e 's|@@MENUNAME@@|Chromium Web Browser|' \
+			${WRKSRC}/chrome/app/resources/manpage.1.in
+
 post-patch-SNDIO-on:
 	@${MKDIR} ${WRKSRC}/media/audio/sndio ${WRKSRC}/media/audio/openbsd
 	@${CP} ${FILESDIR}/sndio_output.* ${WRKSRC}/media/audio/sndio
