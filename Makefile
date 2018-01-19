@@ -34,6 +34,7 @@ BUILD_DEPENDS+=	gperf:devel/gperf \
 LIB_DEPENDS=	libspeechd.so:accessibility/speech-dispatcher \
 		libsnappy.so:archivers/snappy \
 		libFLAC.so:audio/flac \
+		libopus.so:audio/opus \
 		libspeex.so:audio/speex \
 		libdbus-1.so:devel/dbus \
 		libdbus-glib-1.so:devel/dbus-glib \
@@ -246,7 +247,7 @@ pre-configure:
 	#./build/linux/unbundle/remove_bundled_libraries.py [list of preserved]
 	cd ${WRKSRC} && ${PYTHON_CMD} \
 		./build/linux/unbundle/replace_gn_files.py --system-libraries \
-		ffmpeg flac freetype harfbuzz-ng libdrm libevent libwebp libxml libxslt snappy yasm || ${FALSE}
+		ffmpeg flac freetype harfbuzz-ng libdrm libevent libwebp libxml libxslt opus snappy yasm || ${FALSE}
 .endif
 
 do-configure:
