@@ -1,5 +1,5 @@
---- build/config/compiler/BUILD.gn.orig	2017-12-15 02:04:05.000000000 +0100
-+++ build/config/compiler/BUILD.gn	2017-12-30 14:34:10.746719000 +0100
+--- build/config/compiler/BUILD.gn.orig	2018-01-04 21:05:38.000000000 +0100
++++ build/config/compiler/BUILD.gn	2018-01-20 16:53:24.701867000 +0100
 @@ -47,7 +47,7 @@
    # only two architectures that are currently checked in). Turn this off when
    # you are using a custom toolchain and need to control -B in cflags.
@@ -18,22 +18,7 @@
        # TODO(jochen): Enable this on chromeos on arm. http://crbug.com/356580
        # TODO(lizeb,pasko): Fix link errors when linking with order_profiling=1
        # crbug.com/485542
-@@ -277,7 +277,7 @@
-       }
-     }
- 
--    if (is_official_build) {
-+    if (is_official_build && !is_bsd) {
-       # Explicitly pass --build-id to ld. Compilers used to always pass this
-       # implicitly but don't any more (in particular clang when built without
-       # ENABLE_LINKER_BUILD_ID=ON). The crash infrastructure does need a build
-@@ -321,13 +321,12 @@
-     cflags += [ "-pipe" ]
- 
-     ldflags += [
-+      "-Wl,-z,wxneeded",
-       "-Wl,-z,noexecstack",
-       "-Wl,-z,now",
+@@ -326,8 +326,6 @@
        "-Wl,-z,relro",
      ]
      if (!using_sanitizer) {
@@ -42,7 +27,7 @@
        # Functions interposed by the sanitizers can make ld think
        # that some libraries aren't needed when they actually are,
        # http://crbug.com/234010. As workaround, disable --as-needed.
-@@ -424,7 +423,7 @@
+@@ -424,7 +422,7 @@
    # TODO(hans): Remove this once Clang generates better optimized debug info by
    # default. https://crbug.com/765793
    if (is_clang && !is_nacl && current_toolchain == host_toolchain &&
@@ -51,7 +36,7 @@
      cflags += [
        "-Xclang",
        "-mllvm",
-@@ -638,7 +637,7 @@
+@@ -638,7 +636,7 @@
          cflags += [ "-mtune=$arm_tune" ]
        }
      } else if (current_cpu == "arm64") {
@@ -60,7 +45,7 @@
          cflags += [ "--target=aarch64-linux-gnu" ]
          ldflags += [ "--target=aarch64-linux-gnu" ]
        }
-@@ -1261,23 +1260,8 @@
+@@ -1261,23 +1259,8 @@
          # TODO(hans): https://crbug.com/637306
          "-Wno-address-of-packed-member",
  
@@ -84,7 +69,7 @@
        ]
      } else if (use_xcode_clang && xcode_version_int >= 830) {
        # This is necessary to allow a progressive transition from using xcode 8.0
-@@ -1861,7 +1845,7 @@
+@@ -1861,7 +1844,7 @@
          # [1] crrev.com/a81d5ade0b043208e06ad71a38bcf9c348a1a52f
          cflags += [ "-gdwarf-3" ]
        }
@@ -93,3 +78,12 @@
      }
      if (use_debug_fission && !is_nacl) {
        cflags += [ "-gsplit-dwarf" ]
+@@ -1875,7 +1858,7 @@
+     # DWARF info may be corrupt; offsets in a range list entry are in different
+     # sections" there.  Maybe just a bug in nacl_switch_32.S.
+     if (!is_mac && !is_ios && !is_nacl && target_cpu != "x86" &&
+-        (use_gold || use_lld)) {
++        (use_gold || use_lld) && !is_bsd) {
+       if (is_clang) {
+         # This flag enables the GNU-format pubnames and pubtypes sections,
+         # which lld needs in order to generate a correct GDB index.
