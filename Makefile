@@ -167,6 +167,7 @@ CODECS_VARS_OFF=	GN_ARGS+=ffmpeg_branding="Chromium" \
 
 DEBUG_VARS=		BUILDTYPE=Debug \
 			GN_ARGS+=is_debug=true \
+			GN_ARGS+=is_component_build=false \
 			GN_BOOTSTRAP_FLAGS+=--debug \
 			WANTSPACE="lots of free diskspace (~ 8.5GB)"
 DEBUG_VARS_OFF=		BUILDTYPE=Release \
