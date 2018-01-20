@@ -110,7 +110,6 @@ GN_ARGS+=	clang_use_chrome_plugins=false \
 		enable_webrtc=true \
 		fieldtrial_testing_like_official_build=true \
 		is_clang=true \
-		is_official_build=true \
 		toolkit_views=true \
 		treat_warnings_as_errors=false \
 		use_allocator="none" \
