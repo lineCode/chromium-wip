@@ -1,5 +1,5 @@
---- content/browser/browser_main_loop.cc.orig	2017-12-15 02:04:16.000000000 +0100
-+++ content/browser/browser_main_loop.cc	2017-12-24 12:37:25.107401000 +0100
+--- content/browser/browser_main_loop.cc.orig	2018-01-04 21:05:49.000000000 +0100
++++ content/browser/browser_main_loop.cc	2018-01-21 04:50:16.739260000 +0100
 @@ -198,7 +198,7 @@
  #include "base/fuchsia/default_job.h"
  #endif  // defined(OS_FUCHSIA)
@@ -56,3 +56,18 @@
  #endif
  
  #if defined(USE_X11)
+@@ -1619,12 +1629,12 @@
+       base::WrapUnique<SwapMetricsDriver::Delegate>(
+           new SwapMetricsDelegateUma()));
+ 
+-#if !defined(OS_FUCHSIA)
++#if !defined(OS_FUCHSIA) && !defined(OS_BSD)
+   swap_metrics_driver_ =
+       SwapMetricsDriver::Create(std::move(delegate), kSwapMetricsInterval);
+   if (swap_metrics_driver_)
+     swap_metrics_driver_->Start();
+-#endif  // !defined(OS_FUCHSIA)
++#endif  // !defined(OS_FUCHSIA) && !defined(OS_BSD)
+ }
+ 
+ bool BrowserMainLoop::InitializeToolkit() {

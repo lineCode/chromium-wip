@@ -1,6 +1,6 @@
---- content/browser/memory/swap_metrics_driver_impl_linux.cc.orig	2017-12-24 12:51:59.156521000 +0100
-+++ content/browser/memory/swap_metrics_driver_impl_linux.cc	2017-12-24 12:52:25.787197000 +0100
-@@ -16,10 +16,12 @@
+--- content/browser/memory/swap_metrics_driver_impl_linux.cc.orig	2018-01-04 21:05:50.000000000 +0100
++++ content/browser/memory/swap_metrics_driver_impl_linux.cc	2018-01-21 02:27:03.864066000 +0100
+@@ -16,14 +16,17 @@
  namespace {
  
  bool HasSwap() {
@@ -13,3 +13,15 @@
  }
  
  }  // namespace
+ 
++#if !defined(OS_BSD)
+ // static
+ std::unique_ptr<SwapMetricsDriver> SwapMetricsDriver::Create(
+     std::unique_ptr<Delegate> delegate,
+@@ -62,5 +65,6 @@
+ 
+   return SwapMetricsDriver::SwapMetricsUpdateResult::kSwapMetricsUpdateSuccess;
+ }
++#endif
+ 
+ }  // namespace content
