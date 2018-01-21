@@ -39,7 +39,7 @@
 +          return MapSystemError(errno);
 +#endif
          int rv = setsockopt(socket_, IPPROTO_IP, IP_MULTICAST_IF,
-+if defined(OS_BSD)
++#if defined(OS_BSD)
 +                            reinterpret_cast<const char*>(&mreq.imr_interface.s_addr),
 +                            sizeof(mreq.imr_interface.s_addr));
 +#else
